@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuvi's M Nails Spa | Luxury Nail Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        antiqueRose: '#D4A6A1',
+                        champagne: '#F7E7CE',
+                        navy: '#000080',
+                        pearl: '#F8F8F8',
+                        gold: '#D4AF37',
+                        deepLavender: '#9A7AA0',
+                        roseGold: '#B76E79',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px rgba(0,0,0,0.1);
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        .bg-gradient-rose {
+            background: linear-gradient(135deg, #F7E7CE 0%, #D4A6A1 100%);
+        }
+        .animate-delay-100 {
+            animation-delay: 0.1s;
+        }
+        .animate-delay-200 {
+            animation-delay: 0.2s;
+        }
+        .animate-delay-300 {
+            animation-delay: 0.3s;
+        }
+        .animate-delay-400 {
+            animation-delay: 0.4s;
+        }
+        .animate-delay-500 {
+            animation-delay: 0.5s;
+        }
+        .hero-image {
+            background-image: url('https://images.unsplash.com/photo-1604656851054-c7e9b9ffd4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="font-body bg-champagne text-gray-700">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white bg-opacity-90 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-xl font-heading font-bold text-navy">Tavi's M</span>
+                        <span class="text-sm font-light text-gray-500 ml-1">NAIL SPA</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#" class="text-navy font-medium hover:text-deepLavender transition">Home</a>
+                        <a href="#services" class="text-gray-600 hover:text-deepLavender transition">Services</a>
+                        <a href="#gallery" class="text-gray-600 hover:text-deepLavender transition">Gallery</a>
+                        <a href="#about" class="text-gray-600 hover:text-deepLavender transition">About</a>
+                        <a href="#testimonials" class="text-gray-600 hover:text-deepLavender transition">Testimonials</a>
+                        <a href="#contact" class="text-gray-600 hover:text-deepLavender transition">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#booking" class="bg-deepLavender text-white px-6 py-2 rounded-full hover:bg-roseGold transition duration-300 flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i> Book Now
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-deepLavender focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-white bg-opacity-95 pt-24 px-4 transform translate-y-full transition-transform duration-300">
+        <div class="flex flex-col space-y-6 text-center">
+            <a href="#" class="text-deepLavender text-xl font-medium">Home</a>
+            <a href="#services" class="text-gray-600 text-xl hover:text-deepLavender">Services</a>
+            <a href="#gallery" class="text-gray-600 text-xl hover:text-deepLavender">Gallery</a>
+            <a href="#about" class="text-gray-600 text-xl hover:text-deepLavender">About</a>
+            <a href="#testimonials" class="text-gray-600 text-xl hover:text-deepLavender">Testimonials</a>
+            <a href="#contact" class="text-gray-600 text-xl hover:text-deepLavender">Contact</a>
+            <a href="#booking" class="bg-deepLavender text-white px-6 py-3 rounded-full hover:bg-roseGold transition mx-auto w-48">
+                Book Now
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 hero-image">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-6">Tavi's M Nail Spa</h1>
+                <p class="text-xl md:text-2xl text-white mb-8">Beauty in Every Touch</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#booking" class="bg-deepLavender hover:bg-roseGold text-white font-medium py-3 px-8 rounded-full inline-flex items-center transition duration-300 transform hover:scale-105 animate-slide-up">
+                        <span>Reserve Your Session</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#services" class="bg-white hover:bg-pearl text-deepLavender font-medium py-3 px-8 rounded-full inline-flex items-center transition duration-300 transform hover:scale-105 animate-slide-up animate-delay-200">
+                        <span>Explore Services</span>
+                        <i class="fas fa-spa ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 flex justify-center animate-bounce animate-infinite animate-pulse-slow">
+            <a href="#services" class="text-white text-2xl mb-4">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="py-20" id="services">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4">Our Signature Services</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Experience the perfect combination of luxury and care with our handcrafted treatments designed for your ultimate relaxation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300 animate-slide-up">
+                    <div class="text-deepLavender text-4xl mb-4">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-800 mb-3">Luxury Manicure</h3>
+                    <p class="text-gray-600 mb-4">A complete hand pampering session with cuticle care, exfoliation, and a hydrating mask finished with your choice of polish.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-deepLavender font-medium">KSH 700</span>
+                        <span class="text-gray-500">60 min</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300 animate-slide-up animate-delay-200">
+                    <div class="text-gold text-4xl mb-4">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-800 mb-3">Spa Pedicure</h3>
+                    <p class="text-gray-600 mb-4">Rejuvenating foot treatment with exfoliation, warm paraffin dip, extended massage and your favorite polish.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-deepLavender font-medium">KSH 1000</span>
+                        <span class="text-gray-500">90 min</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300 animate-slide-up animate-delay-400">
+                    <div class="text-gold text-4xl mb-4">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-800 mb-3">Nail Artistry</h3>
+                    <p class="text-gray-600 mb-4">Custom designs from simple accents to intricate hand-painted artwork - express your unique style.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-deepLavender font-medium">KSH 150</span>
+                        <span class="text-gray-500">Var. Time</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300 animate-slide-up animate-delay-100">
+                    <div class="text-antiqueRose text-4xl mb-4">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-800 mb-3">Gel Extensions</h3>
+                    <p class="text-gray-600 mb-4">Beautiful, durable nail extensions with a natural look that lasts for weeks without chipping or peeling.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-deepLavender font-medium">KSH 350</span>
+                        <span class="text-gray-500">90 min</span>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300 animate-slide-up animate-delay-300">
+                    <div class="text-deepLavender text-4xl mb-4">
+                        <i class="fas fa-rings-wedding"></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-800 mb-3">Bridal Packages</h3>
+                    <p class="text-gray-600 mb-4">Special bridal packages including trial sessions, custom designs, and group discounts for bridal parties.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-deepLavender font-medium">From KSH 2500</span>
+                        <span class="text-gray-500">Var. Time</span>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md transition duration-300 animate-slide-up animate-delay-500">
+                    <div class="text-gold text-4xl mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-800 mb-3">Couple's Spa Day</h3>
+                    <p class="text-gray-600 mb-4">Enjoy a relaxing spa experience together with side-by-side manicures and pedicures in our couple's suite.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-deepLavender font-medium">KSH 3000</span>
+                        <span class="text-gray-500">120 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#full-services" class="text-deepLavender font-medium hover:text-roseGold transition inline-flex items-center">
+                    View All Services
+                    <i class="fas fa-chevron-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-pearl" id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-12 animate-fade-in">
+                    <div class="relative overflow-hidden rounded-xl shadow-xl h-96 md:h-auto">
+                        <img src="https://images.unsplash.com/photo-1598528738936-c50861cc75a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                              alt="Tuviis M founder"
+                              class="absolute h-full w-full object-cover object-center">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6 text-white">
+                            <h3 class="font-heading text-xl">Monicah</h3>
+                            <p class="text-sm">Founder & Master Technician</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 animate-fade-in" style="animation-delay: 0.2s;">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-6">Our Story</h2>
+                    <div class="w-20 h-1 bg-gold mb-6"></div>
+                    <p class="text-gray-600 mb-4">Tavi's M Nail Spa was born from a passion for artistic beauty and holistic self-care. Our founder, Monicah, envisioned a sanctuary where meticulous nail artistry meets tranquil relaxation.</p>
+                    <p class="text-gray-600 mb-6">With over a decade in the beauty industry and training from Parisian nail academies, Monicah personally trains each technician to deliver exceptional service using only premium, nourishing products.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-deepLavender text-2xl mr-3">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Certified Experts</h4>
+                                <p class="text-gray-600 text-sm">All technicians are fully certified and trained</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-gold text-2xl mr-3">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Eco-Friendly</h4>
+                                <p class="text-gray-600 text-sm">We use non-toxic, cruelty-free products</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center bg-white p-4 rounded-lg shadow-sm">
+                        <div class="bg-deepLavender text-white rounded-full p-3 mr-4">
+                            <i class="fas fa-heart text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Our Philosophy</h4>
+                            <p class="text-gray-600 text-sm">"Nail care is more than aesthetics - it's a ritual of self-love and confidence."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-20" id="gallery">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4">Nail Art Gallery</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Browse our latest creations and find inspiration for your next look. Every design is customized to reflect your personal style.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Gallery Item 1: French Ombre -->
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer group">
+                    <img src="https://images.unsplash.com/photo-1596703265005-7e5dc8f6e213?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                          alt="Elegant French Ombre Design"
+                          class="w-full h-64 md:h-80 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-medium">French Ombré</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2: Floral Pedicure -->
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer group">
+                    <img src="https://i.pinimg.com/736x/c2/6d/8c/c26d8c8fe49e9c66dc4a90b3c9a98c4f.jpg"
+                          alt="Floral Pedicure Design"
+                          class="w-full h-64 md:h-80 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-medium">Marble Chrome</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3: Marble Manicure -->
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer group">
+                    <img src="https://i.pinimg.com/736x/66/25/02/6625028f4bb9fe0f5e56f7b7f8cf9dff.jpg"
+                          alt="Marble Manicure Design"
+                          class="w-full h-64 md:h-80 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-medium">Floral Art</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4: Summer Pedicure -->
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer group">
+                    <img src="https://i.pinimg.com/736x/9b/e2/45/9be24538e1a912f6f73c40ab77a9a8e1.jpg"
+                          alt="Summer Breeze Pedicure"
+                          class="w-full h-64 md:h-80 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-medium">Geometric Design</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5: Geometric Manicure -->
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer group">
+                    <img src="https://i.pinimg.com/736x/df/9f/c9/df9fc9c2e66741ec5d6d6b1d46a3d0c3.jpg"
+                          alt="Modern Geometric Manicure"
+                          class="w-full h-64 md:h-80 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-medium">Crystal Accents</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6: Bridal Pedicure -->
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer group">
+                    <img src="https://i.pinimg.com/736x/38/db/41/38db418cb6a65c8b38a0cf09d73e2cf2.jpg"
+                          alt="Elegant Bridal Pedicure"
+                          class="w-full h-64 md:h-80 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-medium">Pastel Dreams</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center text-deepLavender font-medium hover:text-roseGold transition">
+                    <i class="fab fa-instagram mr-2"></i> Follow us @tavismnails for more inspiration
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white" id="testimonials">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-4">Client Love</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - here's what our clients say about their experiences at Tuvi's M.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-card p-8 rounded-xl shadow-sm relative border border-gray-100">
+                    <div class="text-deepLavender text-5xl absolute top-0 left-8 transform -translate-y-1/2">"</div>
+                    <div class="pl-10">
+                        <p class="text-gray-600 mb-6">Tuvi's M transformed my self-care routine. The attention to detail is simply unmatched. I always leave feeling pampered and my nails stay perfect for weeks!</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Shanice W.</h4>
+                                <p class="text-gray-500 text-sm">Regular Client for 3 Years</p>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card p-8 rounded-xl shadow-sm relative border border-gray-100">
+                    <div class="text-roseGold text-5xl absolute top-0 left-8 transform -translate-y-1/2">"</div>
+                    <div class="pl-10">
+                        <p class="text-gray-600 mb-6">As a bride, I was nervous about my wedding nails. The team at Tuvi's M listened to my vision and created the most elegant, durable design that photographed beautifully all day.</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Michael T.</h4>
+                                <p class="text-gray-500 text-sm">Monthly Client</p>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card p-8 rounded-xl shadow-sm relative border border-gray-100 md:col-span-2">
+                    <div class="text-roseGold text-5xl absolute top-0 left-8 transform -translate-y-1/2">"</div>
+                    <div class="pl-10">
+                        <p class="text-gray-600 mb-6">The spa pedicure is worth every penny! The massage is so relaxing and they use the best quality products. My feet feel brand new every time. Tuvi's M is my guilty pleasure that I won't give up.</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://images.unsplash.com/photo-1529626455594-4ff0732a5623?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Bridal Client" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Aisha B.</h4>
+                                <p class="text-gray-500 text-sm">Bridal Client</p>
+                                <div class="flex text-gold">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button id="show-review-form" class="bg-deepLavender text-white px-6 py-3 rounded-full hover:bg-roseGold transition inline-flex items-center">
+                    <i class="fas fa-pen-fancy mr-2"></i> Share Your Experience
+                </button>
+
+                <!-- Review Form (hidden by default) -->
+                <div id="review-form" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                    <div class="bg-white p-8 rounded-xl max-w-lg w-full mx-4 relative animate-slide-up">
+                        <button id="close-review-form" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                        <h3 class="text-2xl font-heading text-deepLavender mb-6">Leave a Review</h3>
+                        <form id="reviewForm">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deepLavender focus:border-transparent">
+                            </div>
+                            <div class="mb-4">
+                                <label for="rating" class="block text-gray-700 mb-2">Rating</label>
+                                <div class="flex space-x-1">
+                                    <i class="fas fa-star text-gray-300 text-xl cursor-pointer" data-rating="1"></i>
+                                    <i class="fas fa-star text-gray-300 text-xl cursor-pointer" data-rating="2"></i>
+                                    <i class="fas fa-star text-gray-300 text-xl cursor-pointer" data-rating="3"></i>
+                                    <i class="fas fa-star text-gray-300 text-xl cursor-pointer" data-rating="4"></i>
+                                    <i class="fas fa-star text-gray-300 text-xl cursor-pointer" data-rating="5"></i>
+                                </div>
+                                <input type="hidden" id="rating-value" value="0">
+                            </div>
+                            <div class="mb-6">
+                                <label for="review" class="block text-gray-700 mb-2">Your Experience</label>
+                                <textarea id="review" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deepLavender focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-deepLavender text-white py-3 rounded-full hover:bg-roseGold transition">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="py-20 bg-gradient-rose" id="booking">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-800 mb-6 animate-fade-in">Book Your Appointment</h2>
+                    <div class="w-20 h-1 bg-gold mb-6 animate-fade-in"></div>
+                    <p class="text-gray-600 mb-8 max-w-md animate-fade-in">Select from our curated services and choose a time that suits your schedule. Our online booking system makes it effortless to secure your pampering session.</p>
+                    
+                    <div class="animate-fade-in" style="animation-delay: 0.2s;">
+                        <h3 class="text-xl font-medium text-gray-800 mb-4">Why Book With Us?</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <div class="text-gold mr-3 mt-1">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span class="text-gray-600">Hygiene certified salon with hospital-grade sterilization</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="text-gold mr-3 mt-1">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span class="text-gray-600">Small-batch, non-toxic polish brands</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="text-gold mr-3 mt-1">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span class="text-gray-600">Complimentary coffee with spa services</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="text-gold mr-3 mt-1">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span class="text-gray-600">Running on time - your wait is never long</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-8 animate-fade-in" style="animation-delay: 0.4s;">
+                        <h3 class="text-xl font-medium text-gray-800 mb-4">Our Location</h3>
+                        <div class="flex items-start">
+                            <div class="text-deepLavender mr-3 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Kihunguro<br>Bybass, Ruiru</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.84742007227!2d36.87021431475395!3d-1.2623996359480423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f173c0a1f9d27%3A0x4e8a1b1f3d1f3b1a!2sKihunguro%2C%20Ruiru!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske" 
+                                    width="100%" 
+                                    height="200" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy"
+                                    class="rounded-lg shadow-sm"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12 animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="bg-white rounded-xl shadow-xl p-8 floating">
+                        <h3 class="text-2xl font-heading text-gray-800 mb-6">Select Your Service</h3>
+                        
+                        <form id="bookingForm">
+                            <div class="mb-6">
+                                <label for="service" class="block text-gray-700 mb-2">Service</label>
+                                <select id="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deepLavender focus:border-transparent">
+                                    <option value="" selected disabled>Select a service</option>
+                                    <option value="luxury-manicure">Luxury Manicure - KSH 700</option>
+                                    <option value="spa-pedicure">Spa Pedicure - KSH 1000 (90 min)</option>
+                                    <option value="full-spa-set">Full Spa Set (Mani+Pedi) - KSH 1500</option>
+                                    <option value="nail-art">Nail Artistry - Starting at KSH 150</option>
+                                    <option value="gel-extensions">Gel Extensions - KSH 350</option>
+                                    <option value="tips">Tips - KSH 500</option>
+                                    <option value="builders">Builders - KSH 700</option>
+                                    <option value="gumgel">Gumgel - KSH 1500</option>
+                                    <option value="encapsulation">Encapsulation - KSH 1200</option>
+                                    <option value="builder-gel">Builder+Gel - KSH 1000</option>
+                                    <option value="gumgel-tips">Gumgel+Tips - KSH 2000</option>
+                                    <option value="gel">Gel Polish - KSH 250</option>
+                                    <option value="ear-piercings">Ear Piercings - KSH 300</option>
+                                    <option value="eyebrow-shaping">Eyebrow Shaping - KSH 100</option>
+                                    <option value="waxing">Waxing - Starting at KSH 400</option>
+                                    <option value="facial">Facial - Starting at KSH 1000</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="date" class="block text-gray-700 mb-2">Date</label>
+                                <input type="date" id="date" min="" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deepLavender focus:border-transparent">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="time" class="block text-gray-700 mb-2">Time</label>
+                                <select id="time" disabled class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deepLavender focus:border-transparent">
+                                    <option value="" selected disabled>Select a date first</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="stylist" class="block text-gray-700 mb-2">Preferred Stylist (optional)</label>
+                                <select id="stylist" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deepLavender focus:border-transparent">
+                                    <option value="any" selected>Any Available</option>
+                                    <option value="tavi">Monicah (Owner)</option>
+                                    <option value="Dan">Dan</option>
+                                    <option value="Phil">Phil</option>
+                                    <option value="Tavi">Tuvi</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="notes" class="block text-gray-700 mb-2">Special Requests</label>
+                                <textarea id="notes" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deepLavender focus:border-transparent" placeholder="Allergies, design inspiration, etc."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-navy text-white py-4 rounded-full hover:bg-antiqueRose transition font-medium">
+                                Confirm Booking
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer class="bg-white pt-20 pb-12" id="contact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <h3 class="text-xl font-heading font-medium text-gray-800 mb-6">Tavi's M Nail Spa</h3>
+                    <p class="text-gray-600 mb-6">Where artistry meets tranquility. Your destination for luxurious nail care experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-500 hover:text-deepLavender transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-deepLavender transition">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-deepLavender transition">
+                            <i class="fab fa-tiktok text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-deepLavender transition">
+                            <i class="fab fa-pinterest text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-heading font-medium text-gray-800 mb-6">Contact Us</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-deepLavender mr-3 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Kihunguro<br>Bybass, Ruiru</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-deepLavender mr-3 mt-1">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">0727919341</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-deepLavender mr-3 mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">tuvisnailspa@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-heading font-medium text-gray-800 mb-6">Hours</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">Monday - Friday</span>
+                            <span class="text-gray-600">9AM - 7PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">Saturday</span>
+                            <span class="text-gray-600">10AM - 5PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">Sunday</span>
+                            <span class="text-gray-600">11AM - 4PM</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-heading font-medium text-gray-800 mt-8 mb-4">Newsletter</h3>
+                    <p class="text-gray-600 mb-4">Subscribe for exclusive offers and nail care tips.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-deepLavender flex-grow">
+                        <button type="submit" class="bg-deepLavender text-white px-4 py-2 rounded-r-lg hover:bg-roseGold transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+                    
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© 2023 Tuvi's M Nails Spa. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-deepLavender transition text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-deepLavender transition text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-deepLavender transition text-sm">Cancellation Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('translate-y-0');
+                mobileMenu.classList.add('translate-y-full');
+            } else {
+                mobileMenu.classList.remove('translate-y-full');
+                mobileMenu.classList.add('translate-y-0');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('translate-y-0');
+                        mobileMenu.classList.add('translate-y-full');
+                    }
+                    
+                    // Scroll to target
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Review form toggle
+        const showReviewForm = document.getElementById('show-review-form');
+        const reviewForm = document.getElementById('review-form');
+        const closeReviewForm = document.getElementById('close-review-form');
+        const stars = document.querySelectorAll('.fa-star[data-rating]');
+        const ratingValue = document.getElementById('rating-value');
+
+        showReviewForm.addEventListener('click', () => {
+            reviewForm.classList.remove('hidden');
+        });
+
+        closeReviewForm.addEventListener('click', () => {
+            reviewForm.classList.add('hidden');
+        });
+
+        // Star rating functionality
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = star.getAttribute('data-rating');
+                ratingValue.value = rating;
+                
+                stars.forEach((s, index) => {
+                    if (index < rating) {
+                        s.classList.remove('text-gray-300');
+                        s.classList.add('text-gold');
+                    } else {
+                        s.classList.remove('text-gold');
+                        s.classList.add('text-gray-300');
+                    }
+                });
+            });
+        });
+
+        // Booking form date handling
+        const bookingForm = document.getElementById('bookingForm');
+        const dateInput = document.getElementById('date');
+        const timeSelect = document.getElementById('time');
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+        // Simulate fetching available times when date is selected
+        dateInput.addEventListener('change', () => {
+            if (dateInput.value) {
+                timeSelect.disabled = false;
+                timeSelect.innerHTML = '';
+                
+                // Generate some sample times (in a real app, you'd fetch these from your backend)
+                const openings = [
+                    '9:00 AM', '10:30 AM', '12:00 PM', '1:30 PM', '3:00 PM', '4:30 PM'
+                ];
+                
+                openings.forEach(time => {
+                    const option = document.createElement('option');
+                    option.value = time;
+                    option.textContent = time;
+                    timeSelect.appendChild(option);
+                });
+            } else {
+                timeSelect.disabled = true;
+                timeSelect.innerHTML = '<option value="" selected disabled>Select a date first</option>';
+            }
+        });
+
+        // Form submission handlers (would be connected to backend in a real app)
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your booking! A confirmation will be sent shortly.');
+            bookingForm.reset();
+            timeSelect.disabled = true;
+            timeSelect.innerHTML = '<option value="" selected disabled>Select a date first</option>';
+        });
+
+        document.getElementById('reviewForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your review! We appreciate your feedback.');
+            document.getElementById('reviewForm').reset();
+            stars.forEach(star => {
+                star.classList.remove('text-gold');
+                star.classList.add('text-gray-300');
+            });
+            reviewForm.classList.add('hidden');
+        });
+
+        // Scroll animations
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=DUNCAN11/tuvismnailspa-com" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
